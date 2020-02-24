@@ -6,7 +6,7 @@ COPY . ./
 LABEL multi.maintainer="deso" multi.desc="this stage for build app" 
 WORKDIR /app
 ENV NODE_OPTIONS="--max-old-space-size=2048"
-RUN npm install -g @angular/cli && npm install && npm run build
+RUN npm install -g @angular/cli && npm install && ng build --prod --outputPath=/app/out --aot=true --optimization=true --extractCss=true
 
 # Build runtime image
 FROM node:12.14.0
